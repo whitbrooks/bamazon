@@ -1,3 +1,5 @@
+DROP DATABASE IF EXISTS bamazon_DB;
+
 CREATE DATABASE bamazon_DB;
 
 USE bamazon_DB;
@@ -11,5 +13,34 @@ CREATE TABLE products(
   PRIMARY KEY (item_id)  
 );
 
+
 INSERT INTO products (product_name, department_name, price, stock_quantity)
-VALUES ("Rainbow Brite", VHS, 15, 12), ("Cabbage Patch Kid", dolls, 30, 5), ("Care Bear", stuffed animals, 33, 1), ("Popple", stuffed animals, 45, 3), ("Easy Bake Oven", toys, 59, 2), ("Nintendo", games, 70, 1), ("The Dark Crystal", VHS, 5, 6);
+VALUES ("Rainbow Brite", "Video", 15, 12); 
+
+INSERT INTO products (product_name, department_name, price, stock_quantity)
+VALUES ("Cabbage Patch Kid", "Toys", 30, 5); 
+
+INSERT INTO products (product_name, department_name, price, stock_quantity)
+VALUES ("Care Bear", "Toys", 33, 1); 
+
+INSERT INTO products (product_name, department_name, price, stock_quantity)
+VALUES ("Popple", "Toys", 45, 3); 
+
+INSERT INTO products (product_name, department_name, price, stock_quantity)
+VALUES ("Easy Bake Oven", "Toys", 59, 2); 
+
+INSERT INTO products (product_name, department_name, price, stock_quantity)
+VALUES ("Nintendo", "Games", 70, 1); 
+
+INSERT INTO products (product_name, department_name, price, stock_quantity)
+VALUES ("The Dark Crystal", "Video", 5, 6); 
+
+INSERT INTO products (product_name, department_name, price, stock_quantity)
+VALUES ("Jem", "Video", 5, 4); 
+
+INSERT INTO products (product_name, department_name, price, stock_quantity)
+VALUES ("Operation", "Games", 12, 1); 
+
+INSERT INTO products (product_name, department_name, price, stock_quantity)
+VALUES ("Guess Who?", "Games", 15, 2); 
+
