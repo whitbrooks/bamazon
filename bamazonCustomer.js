@@ -36,7 +36,8 @@ function inventory() {
     console.table(res);
     // start order process
     custOrder();
-    
+    });
+}
 
 // prompt user to select item for purchase
 function custOrder() {
@@ -45,9 +46,9 @@ function custOrder() {
         name: "id",
         type: "input",
         message: "Please input the ID of the product you would like to purchase.",
-        validate: function(val) {
-            return (!isNaN(val) && val.length < 2 && val.lenth > 0);
-            }
+        // validate: function(val) {
+        //     return (!isNaN(val) && val.length < 2 && val.lenth > 0);
+        //     }
     },
     {
         name: "quantity",
@@ -61,33 +62,33 @@ function custOrder() {
     .then(function(answers) {
         getPrice(answers.id, answers.quantity);
         });
-    
+}  
     
 // if product inventory is >= request quantity, tell user cost of their purchase. If quantity is too low, allow user to order again.
 
 function getPrice(id, quantity) {
     connection.query("SELECT * FROM products WHERE item_id = " + id, function(err, res) {
         if (err) throw err;
-    
         var stock_quantity = res[0].stock_quantity;
         var price = res[0].price;
         if (stock_quantity >= quantity) {
         var cost = price * quantity;
-        console.log("\nYour total is" + cost + "Thanks for your purchase.\n");
-        updateInventory(id, quantity);
-        custOrder();
+        console.log("\nYour total is $" + cost + ". Thanks for your purchase.\n");
+        updateInventory(id, quantity, stock_quantity);
         } else {
-        console.log("\nWe have " + stock_quantity + "of your chosen item in stock. Please make another order.\n");
+        console.log("\nWe only have " + stock_quantity + " of your chosen item in stock. Please make another order.\n");
         custOrder();
         }
     });
     }
 
 // update inventory
-function updateInventory(id, quantity) {
-    connection.query("UPDATE products SET stock_quantity = stock_quantity - " + quantity + "WHERE item_id = " + id, function(err, res) {
+function updateInventory(id, quantity, stock_quantity) {
+    updatedQuantity = stock_quantity -= quantity
+    connection.query("UPDATE products SET stock_quantity =" + updatedQuantity + " WHERE item_id = " + id, function(err, res) {
         if (err) throw err;
-        console.log(res);
+        // console.log("response",res);
+        custOrder();
         connection.end();
-    });  
+    });
 }
