@@ -9,4 +9,4 @@
 5. if there isn't sufficient inventory, the user is prompted to start over
 6. updates database
 
-![Screen Shot](myimage.jpg)
+![Screen Shot](/myimage.jpg)
