@@ -8,5 +8,5 @@
 4. compares user input to data in database. if there is sufficient inventory, the purchase is completed and the user sees the total cost of their purchase
 5. if there isn't sufficient inventory, the user is prompted to start over
 6. updates database
-   
-![Screen Shot](/image.jpg)
+
+![Screen Shot](myimage.jpg)
