@@ -46,9 +46,7 @@ function custOrder() {
         name: "id",
         type: "input",
         message: "Please input the ID of the product you would like to purchase.",
-        // validate: function(val) {
-        //     return (!isNaN(val) && val.length < 2 && val.lenth > 0);
-        //     }
+       
     },
     {
         name: "quantity",
@@ -87,7 +85,6 @@ function updateInventory(id, quantity, stock_quantity) {
     updatedQuantity = stock_quantity -= quantity
     connection.query("UPDATE products SET stock_quantity =" + updatedQuantity + " WHERE item_id = " + id, function(err, res) {
         if (err) throw err;
-        // console.log("response",res);
         custOrder();
         connection.end();
     });
